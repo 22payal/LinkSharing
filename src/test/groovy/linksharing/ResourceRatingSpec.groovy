@@ -130,27 +130,59 @@ class ResourceRatingSpec extends Specification implements DomainUnitTest<Resourc
 
     def "minimum and maximum score of rating should be 1 and 5 respectively"(){
         setup:
-        String email = "payal.nigam@tothenew.com"
-        String password = 'payal123'
-        User user = new User(
-                email: email,
+        User user1 = new User(
+                email: "payal.nigam@tothenew.com",
                 userName:"payal",
-                password:password,
+                password:"payal123",
                 firstName: "Payal",
                 lastName: "Nigam",
                 admin:false,
                 active:true
         )
-        user.save()
-        Topic topic = new Topic(name:"grails_domain",visibility: Visibility.PUBLIC,createdBy: user)
-        topic.save()
-        Resource resource=new LinkResource(url:"www.yahoo.com",description: "abhabhab",user: user,topic: topic)
-        resource.save()
-        ResourceRating resourceRating1=new ResourceRating(score: 1,user: user,resource: resource)
-        ResourceRating resourceRating2=new ResourceRating(score: 5,user: user,resource: resource)
+        user1.save()
 
-        ResourceRating resourceRating3=new ResourceRating(score:0,user: user,resource: resource)
-        ResourceRating resourceRating4=new ResourceRating(score:6,user: user,resource: resource)
+        User user2 = new User(
+                email: "first.user@tothenew.com",
+                userName:"first.user",
+                password:"first123",
+                firstName: "first",
+                lastName: "user",
+                admin:false,
+                active:true
+        )
+        user2.save()
+
+        User user3 = new User(
+                email: "second.user@tothenew.com",
+                userName:"second.user",
+                password:"second123",
+                firstName: "second",
+                lastName: "user",
+                admin:false,
+                active:true
+        )
+        user3.save()
+
+        User user4 = new User(
+                email: "third.user@tothenew.com",
+                userName:"third.user",
+                password:"third123",
+                firstName: "third",
+                lastName: "user",
+                admin:false,
+                active:true
+        )
+        user4.save()
+
+        Topic topic = new Topic(name:"grails_domain",visibility: Visibility.PUBLIC,createdBy: user1)
+        topic.save()
+        Resource resource=new LinkResource(url:"www.yahoo.com",description: "abhabhab",user: user1,topic: topic)
+        resource.save()
+        ResourceRating resourceRating1=new ResourceRating(score: 1,user: user1,resource: resource)
+        ResourceRating resourceRating2=new ResourceRating(score: 5,user: user2,resource: resource)
+
+        ResourceRating resourceRating3=new ResourceRating(score:0,user: user3,resource: resource)
+        ResourceRating resourceRating4=new ResourceRating(score:6,user: user4,resource: resource)
 
         when:
         resourceRating1.save()
@@ -174,9 +206,6 @@ class ResourceRatingSpec extends Specification implements DomainUnitTest<Resourc
 
         when:
         resourceRating4.save()
-
-
-
 
         then:
         resourceRating4.errors.getFieldErrorCount('score')==1

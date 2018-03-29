@@ -163,8 +163,6 @@ class BootStrap {
     void createResource() {
         if (Resource.count == 0) {
             List<Topic> allTopics = Topic.getAll()
-
-
             allTopics.each {
                 Topic temp = it
 
@@ -183,14 +181,12 @@ class BootStrap {
 
                         log.info("Saved Successfully : $linkResource")
                     } else
+                    {
                         log.error("Error while saving : $linkResource")
+                    }
 
-                }
-                // temp.save(flush: true)
-                (1..2).eachWithIndex
-                        {
-                            index, item ->
-                                DocumentResource documentResource = new DocumentResource(
+
+                    DocumentResource documentResource = new DocumentResource(
                                         createdBy: temp.createdBy,
                                         description: "This document resource with index $index is created by ${temp.createdBy.name} for topic ${temp.topicName}",
                                         topic: temp,
@@ -202,7 +198,9 @@ class BootStrap {
                                     temp.save(flush: true)
                                     log.info("Saved Successfully : $documentResource")
                                 } else
+                                {
                                     log.error("Error while saving : $documentResource")
+                                }
                         }
                 //temp.save(flush: true)
             }

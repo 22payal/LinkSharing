@@ -1,0 +1,5 @@
+package linksharing
+
+
+class LoginCheckInterceptor {
+}
