@@ -7,7 +7,12 @@ class ApplicationInterceptor {
     {
         matchAll()
     }
-    boolean before() {   log.info("ACTION AND CONTROLLER LOG: ${params.toString()}")
+    boolean before() {
+        if (!session.user) {
+            flash.error= "NO ACTIVE SESSION"
+            return false
+        }
+
         true
     }
 
