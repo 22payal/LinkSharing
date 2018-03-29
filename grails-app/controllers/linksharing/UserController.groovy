@@ -6,30 +6,25 @@ class UserController {
 
     def index() {
 
-      //  render("user dashboard")
+        //  render("user dashboard")
         render(session.user.userName)
 
     }
 
-    def show(Integer id)
-    {
-        if (Topic.findAllById(id).size()==0) {
-            flash.error = "NO SUCH TOPIC"
-            redirect(controller: 'login', action: 'index')
+    def show(Integer id) {
 
-        }
-        else {
-            if (Topic.findByVisibility(Visibility.PUBLIC)) {
-                render("SUCCESS")
-
-            }
+        Topic topic = Topic.get(id)
+        if (topic.visibility == Visibility.PUBLIC) {
+            render("success")
+        } else {
+            if (Subscription.findByTopicAndUser(topic, session.user))
+                render("Subscription Exists")
             else {
-                if(Subscription.findByTopicAndUser(topic,session.user))
-                    render("Subscription Exists")
-                else
-                    render("Subscription does not exists")
+                flash.error = "Subscription does not exists"
+                redirect(controller:"Login",action: "index")
             }
-        }
 
+        }
     }
+}
 
