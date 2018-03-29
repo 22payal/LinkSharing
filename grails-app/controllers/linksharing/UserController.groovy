@@ -11,5 +11,10 @@ class UserController {
 
     }
 
+    def show(Integer id)
+    {
+
+    }
+
 }
 
