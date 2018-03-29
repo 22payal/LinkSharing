@@ -24,7 +24,10 @@ class LoginController {
                 session.user = user
 
             }
+            else {
+                flash.error = "Your account is not active"
 
+            }
             redirect(action: 'index')
 
 
