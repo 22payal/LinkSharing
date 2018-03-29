@@ -16,7 +16,7 @@ class LoginController {
 
  }
 
-    def loginHandler()
+    def loginHandler(String userName,String password)
     {
 
     }
