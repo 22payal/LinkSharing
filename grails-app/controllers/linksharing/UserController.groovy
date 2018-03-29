@@ -18,7 +18,11 @@ class UserController {
             redirect(controller: 'login', action: 'index')
 
         }
-        render("Topics Found")
+        else {
+            if (Topic.findByVisibility(Visibility.PUBLIC)) {
+                render("SUCCESS")
+
+            }
 
     }
 
