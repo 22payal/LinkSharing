@@ -23,6 +23,13 @@ class UserController {
                 render("SUCCESS")
 
             }
+            else {
+                if(Subscription.findByTopicAndUser(topic,session.user))
+                    render("Subscription Exists")
+                else
+                    render("Subscription does not exists")
+            }
+        }
 
     }
 
