@@ -12,12 +12,29 @@ class LoginController {
     }
     def logout() {
         session.invalidate()
-        redirect(action:'login/index')
+        redirect(action:'index')
 
  }
 
     def loginHandler(String userName,String password)
     {
+        User user = User.findByUserNameAndPassword(userName, password)
+        if(user!=null) {
+            if(user.active) {
+                session.user=user
+                forward(controller: 'user', action: 'index')
+
+            }
+            else {
+                flash.error = "Your account is not active"
+
+            }
+        }
+        else
+        {
+            flash.error="User not found"
+        }
+        redirect(action: 'index')
+    }
 
     }
-}
