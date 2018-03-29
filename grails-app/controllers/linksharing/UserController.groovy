@@ -13,8 +13,12 @@ class UserController {
 
     def show(Integer id)
     {
+        if (Topic.findAllById(id).size()==0) {
+            flash.error = "NO SUCH TOPIC"
+            redirect(controller: 'login', action: 'index')
+
+        }
+        render("Topics Found")
 
     }
-
-}
 
