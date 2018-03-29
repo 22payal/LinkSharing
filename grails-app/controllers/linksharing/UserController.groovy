@@ -6,7 +6,8 @@ class UserController {
 
     def index() {
 
-        render("user dashboard")
+      //  render("user dashboard")
+        render(session.user.userName)
 
     }
 
