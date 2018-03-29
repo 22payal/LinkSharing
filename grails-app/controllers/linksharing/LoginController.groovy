@@ -5,7 +5,7 @@ class LoginController {
 
     def index() {
         if (session.user)
-            forward(controller: 'user', action: 'index')
+            forward(controller: 'User', action: 'index')
         else
             render('failure')
 
@@ -13,7 +13,7 @@ class LoginController {
 
     def logout() {
         session.invalidate()
-        redirect(action: 'index')
+        redirect(controller: 'Login',action: 'index')
 
     }
 
@@ -22,15 +22,19 @@ class LoginController {
         if (user != null) {
             if (user.active) {
                 session.user = user
+                redirect(action: 'index')
 
             }
             else {
                 flash.error = "Your account is not active"
 
             }
-            redirect(action: 'index')
 
+        }
 
+        else
+        {
+            flash.error="User not found"
         }
     }
 }
