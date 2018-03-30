@@ -42,9 +42,9 @@ class User {
 
     }
 
-    static mapping = {
-        sort 'id':'desc'
-    }
+//    static mapping = {
+//        sort 'id':'desc'
+//    }
 
     @Override
     public String toString() {

@@ -3,7 +3,7 @@ package linksharing
 import grails.testing.web.controllers.ControllerUnitTest
 import spock.lang.Specification
 
-class TopicControllerSpec extends Specification implements ControllerUnitTest<TopicController> {
+class  TopicControllerSpec extends Specification implements ControllerUnitTest<TopicController> {
 
     def setup() {
     }

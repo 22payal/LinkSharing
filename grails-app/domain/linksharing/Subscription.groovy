@@ -19,14 +19,8 @@ class Subscription {
         seriousness(nullable:false)
 
     }
-
-    static mapping = {
-        seriousness enumType: 'SERIOUS'
-    }
-
-//    Subscription(Topic topic, User user, Seriousness seriousness) {
-//        this.topic = topic
-//        this.user = user
-//        this.seriousness = seriousness
+//
+//    static mapping = {
+//        seriousness enumType: 'SERIOUS'
 //    }
 }

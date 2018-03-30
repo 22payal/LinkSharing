@@ -26,34 +26,11 @@ class Topic {
         createdBy(nullable: false)
         visibility(nullable: false)
     }
-
-    static  mapping = {
-        sort 'topicName':"asc"
-
-    }
-
-//    Topic(String topicName, User createdBy, Visibility visibility) {
-//        this.topicName = topicName
-//        this.createdBy = createdBy
-//        this.visibility = visibility
+//
+//    static  mapping = {
+//        sort 'topicName':"asc"
+//
 //    }
-
-    void afterInsert() {
-        log.info "<--------- After Insert event of topic------>"
-        Topic.withNewSession
-                {
-                    println("creating default subscription")
-                    Subscription subscription = new Subscription(
-                                       topic: this,
-                                       user: this.createdBy,
-                                       seriousness: Seriousness.VerySerious
-                                        )
-                    subscription.save(flush: true, failOnError: true)
-                    //this.addToSubscription(subscription)
-                }
-
-    }
-
     @Override
     public String toString() {
         return "Topic{" +

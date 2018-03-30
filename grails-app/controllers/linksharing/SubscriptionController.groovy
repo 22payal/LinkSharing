@@ -29,7 +29,7 @@ class SubscriptionController {
         if ((subscription)&&(Seriousness.convertSeriousness(seriousness)))
         {
             subscription.save()
-            
+
             if ( subscription.save())
             {
                 render("Updated Subscription successfully saved")

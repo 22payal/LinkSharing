@@ -35,6 +35,7 @@ if (Environment.isDevelopmentMode() && targetDir != null) {
 }
 
 //root(DEBUG, ['STDOUT'])
+
 logger 'grails.app.controllers', INFO, ['STDOUT']
 logger 'grails.app.controllers', DEBUG, ['STDOUT']
 logger 'grails.app.controllers', WARN, ['STDOUT']
