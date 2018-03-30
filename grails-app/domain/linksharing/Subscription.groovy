@@ -19,8 +19,10 @@ class Subscription {
         seriousness(nullable:false)
 
     }
-//
-//    static mapping = {
-//        seriousness enumType: 'SERIOUS'
-//    }
+
+    static mapping = {
+        seriousness enumType: 'SERIOUS'
+        topic fetch: 'join'
+        user fetch: 'join'
+    }
 }
