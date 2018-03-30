@@ -10,7 +10,7 @@ class ResourceController {
 
         if(!resource)
         {
-            render("exception of object not found")
+           throw new Exception( "exception of object not found")
         }
     }
 
