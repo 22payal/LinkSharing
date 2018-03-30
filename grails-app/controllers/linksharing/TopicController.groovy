@@ -1,5 +1,7 @@
 package linksharing
 
+import enumeration.Visibility
+
 class TopicController {
 
     def index() { }
@@ -16,8 +18,8 @@ class TopicController {
 
    def topicSave() { }
 
-    def save(Topic topic, String seriousness)
+    def save(Topic topic, String visibility)
     {
-
+      println( Visibility.convertIntoEnum(visibility))
     }
 }
