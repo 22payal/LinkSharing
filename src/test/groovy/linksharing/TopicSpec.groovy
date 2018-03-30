@@ -34,11 +34,11 @@ class TopicSpec extends Specification implements DomainUnitTest<Topic> {
 
         String email1 = "payalnigam@tothenew.com"
         User user1 = new User(
-                email: email,
-                userName: "payalNigam1",
-                password: "payal1234",
-                firstName: "Payal",
-                lastName: "Nigam",
+                email: email1,
+                userName: "newUser",
+                password: "newUser1234",
+                firstName: "new",
+                lastName: "user",
                 admin: false,
                 active: true
         )
@@ -50,7 +50,7 @@ class TopicSpec extends Specification implements DomainUnitTest<Topic> {
         topic1.visibility = Visibility.PRIVATE
 
         Topic topic2 = new Topic()
-        topic2.topicName = topic1.topicName
+        topic2.topicName = "topic"
         topic2.createdBy = user1
         topic2.visibility = Visibility.PUBLIC
 
