@@ -26,11 +26,12 @@ class Topic {
         createdBy(nullable: false)
         visibility(nullable: false)
     }
-//
-//    static  mapping = {
-//        sort 'topicName':"asc"
-//
-//    }
+
+    static  mapping = {
+        sort 'topicName':"asc"
+        
+
+    }
     @Override
     public String toString() {
         return "Topic{" +
