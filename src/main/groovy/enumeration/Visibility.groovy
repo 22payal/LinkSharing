@@ -18,23 +18,25 @@ enum Visibility {
        inputString = inputString.toUpperCase()
        Visibility visibility = inputString
 
-       println(visibility.value)
+       return visibility
    }
     }
-//
-// class Demo
-//        {
-//            public static void main(String[] args) {
-//                String inputString = "PUBLIC"
-//                inputString.toUpperCase()
-//              Integer result=  convert(inputString)
-//                println("corresponding value is :"+result)
-//            }
-//
-//             static int convert(String inputString) {
-//                    Visibility visibility = inputString
-//                    //println visibility
-//                    return visibility.value
-//                }
-//
-//        }
+
+ class Demo
+        {
+            public static void main(String[] args) {
+                String inputString = "PUBLIC"
+                inputString.toUpperCase()
+              String result=  convert(inputString)
+                println("corresponding value is :"+result)
+
+                println( Visibility.convertIntoEnum(inputString))
+            }
+
+             static String convert(String inputString) {
+                    Visibility visibility = inputString
+                    //println visibility
+                    return visibility
+                }
+
+        }
