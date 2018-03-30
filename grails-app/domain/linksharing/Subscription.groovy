@@ -24,9 +24,9 @@ class Subscription {
         seriousness enumType: 'SERIOUS'
     }
 
-    Subscription(Topic topic, User user, Seriousness seriousness) {
-        this.topic = topic
-        this.user = user
-        this.seriousness = seriousness
-    }
+//    Subscription(Topic topic, User user, Seriousness seriousness) {
+//        this.topic = topic
+//        this.user = user
+//        this.seriousness = seriousness
+//    }
 }

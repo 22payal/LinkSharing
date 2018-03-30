@@ -27,11 +27,16 @@ class Topic {
         visibility(nullable: false)
     }
 
-    Topic(String topicName, User createdBy, Visibility visibility) {
-        this.topicName = topicName
-        this.createdBy = createdBy
-        this.visibility = visibility
+    static  mapping = {
+        sort 'topicName':"asc"
+
     }
+
+//    Topic(String topicName, User createdBy, Visibility visibility) {
+//        this.topicName = topicName
+//        this.createdBy = createdBy
+//        this.visibility = visibility
+//    }
 
     void afterInsert() {
         log.info "<--------- After Insert event of topic------>"
@@ -49,10 +54,6 @@ class Topic {
 
     }
 
-static  mapping = {
-    sort 'topicName':'asc'
-
-}
     @Override
     public String toString() {
         return "Topic{" +
