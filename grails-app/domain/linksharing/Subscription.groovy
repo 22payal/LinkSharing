@@ -8,7 +8,7 @@ class Subscription {
     Topic topic
     User user
     Date dateCreated
-    Seriousness seriousness
+    Seriousness seriousness ='SERIOUS'
 
 
     static belongsTo = [topic:Topic,user:User]
@@ -20,10 +20,7 @@ class Subscription {
 
     }
 
-//    static mapping = {
-//        seriousness enumType: 'SERIOUS'
-//        topic fetch: 'join'
-//        user fetch: 'join'
-//    }
-
+    static mapping = {
+                seriousness defaultValue: Seriousness.SERIOUS
+           }
 }
