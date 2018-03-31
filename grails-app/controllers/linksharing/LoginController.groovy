@@ -1,5 +1,7 @@
 package linksharing
 
+import vo.ResourceVo
+
 
 class LoginController {
 
@@ -79,4 +81,9 @@ class LoginController {
 
          render(view:'register')
     }
+
+    def topPosts(){
+               List<ResourceVo> topPosts = Resource.getTopPost()
+                println("$topPosts.id + $topPosts.createdBy + $topPosts.topicName")
+            }
 }
