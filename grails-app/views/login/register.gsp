@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" xmlns="http://www.w3.org/1999/html">
 <head>
 
     <meta charset="UTF-8">
@@ -131,24 +131,23 @@
         </div>
 
     </div>
-
     <div class="col-lg-6">
         <div class="col-lg-12 " style="margin-top: 25px">
 
             <div class=" panel panel-default  ">
-                <div class="panel-heading " style="background:#007efc">
+                <p class="panel-heading " style="background:#007efc">
                     <p>
-                    <h3 style="color:white">Login</h3></p>
+                    <h3 style="color:white">Login</h3> </p>
                 </div>
                 <div class="panel-body ">
-                    <form>
+                    <g:form controller="Login" action="loginHandler" method="post">
                         <div class="form-group col-lg-10">
-                            <label for="em">Email</label>
-                            <input class="form-control" type="email" id="em" placeholder="enter your email ID">
+                            <label>Username</label>
+                            <input class="form-control" type="text" name="loginusername" placeholder="enter your username">
                         </div><div class="col-lg-2"></div>
                         <div class="form-group col-lg-10">
-                            <label for="psw">Password</label>
-                            <input class="form-control" type="password" id="psw" placeholder="enter your password">
+                            <label>Password</label>
+                            <input class="form-control" type="password" name="loginpassword" placeholder="enter your password">
 
                         </div>
                         <div class="col-lg-12"></div>
@@ -160,12 +159,11 @@
                         </div>
 
 
-                    </form>
+                    </g:form>
 
                 </div>
             </div>
         </div>
-
         <div class="col-lg-12" style="margin-top: 25px;">
             <div class=" panel panel-default ">
                 <div class="panel-heading  " style="background:#007efc">
@@ -173,40 +171,40 @@
                     <h3 style="color:white">Registration</h3></p>
                 </div>
                 <div class="panel-body ">
-                    <form>
+                    <g:form>
                         <div class="form-group col-lg-10">
-                            <label for="fname">First Name</label>
-                            <input class="form-control" type="text" id="fname" placeholder="enter your first name">
+                            <label for="firstName">First Name</label>
+                            <input class="form-control" type="text" id="firstName" placeholder="enter your first name">
                         </div><div class="col-lg-2"></div>
                         <div class="form-group col-lg-10">
-                            <label for="lname">Last name </label>
-                            <input class="form-control" type="text" id="lname" placeholder="enter your last name">
+                            <label for="lastName">Last name </label>
+                            <input class="form-control" type="text" id="lastName" placeholder="enter your last name">
 
                         </div>
                         <div class="form-group col-lg-10">
-                            <label for="em1">Email </label>
-                            <input class="form-control" type="email" id="em1" placeholder="enter your last name">
+                            <label for="email">Email </label>
+                            <input class="form-control" type="email" id="email" placeholder="enter your last name">
 
                         </div>
                         <div class="form-group col-lg-10">
-                            <label for="uname">Username </label>
-                            <input class="form-control" type="text" id="uname" >
+                            <label for="userName">Username </label>
+                            <input class="form-control" type="text" id="userName" >
 
                         </div>
 
                         <div class="form-group col-lg-10">
-                            <label for="psw1">Password </label>
-                            <input class="form-control" type="password" id="psw1" placeholder="enter password">
+                            <label for="password">Password </label>
+                            <input class="form-control" type="password" id="password" placeholder="enter password">
 
                         </div>
                         <div class="form-group col-lg-10">
-                            <label for="cpsw1">Confirm Password </label>
-                            <input class="form-control" type="password" id="cpsw1" placeholder="confirm your  password">
+                            <label for="confirmPassword">Confirm Password </label>
+                            <input class="form-control" type="password" id="confirmPassword" placeholder="confirm your  password">
 
                         </div>
                         <div class="form-group col-lg-10">
-                            <label for="ph">Photo </label>
-                            <input class="form-control" type="file" id="ph" >
+                            <label for="photo">Photo </label>
+                            <input class="form-control" type="file" id="photo" >
 
                         </div>
 
@@ -215,7 +213,7 @@
                         </div>
 
 
-                    </form>
+                    </g:form>
 
                 </div>
             </div>

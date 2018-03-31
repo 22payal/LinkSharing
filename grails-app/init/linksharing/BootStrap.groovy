@@ -1,7 +1,6 @@
+package linksharing
 
-    package linksharing
-
-    import enumeration.Seriousness
+import enumeration.Seriousness
     import enumeration.Visibility
     import grails.util.Holders
 

@@ -9,8 +9,7 @@ class UrlMappings {
             }
         }
 
-      //  "/"(view:"/index")
-        "/"(view:"/login/register")
+        "/"(view:"/index")
         "500"(view:'/error')
         "404"(view:'/notFound')
     }

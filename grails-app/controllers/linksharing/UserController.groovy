@@ -21,7 +21,7 @@ class UserController {
                 render("Subscription Exists")
             else {
                 flash.error = "Subscription does not exists"
-                redirect(controller:"Login",action: "index")
+              //  redirect(controller:"Login",action: "index")
             }
 
         }
