@@ -29,9 +29,10 @@ class Topic {
 
     static  mapping = {
         sort 'topicName':"asc"
-        
+
 
     }
+
     @Override
     public String toString() {
         return "Topic{" +

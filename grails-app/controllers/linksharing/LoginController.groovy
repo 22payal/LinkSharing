@@ -22,7 +22,7 @@ class LoginController {
         if (user != null) {
             if (user.active) {
                 session.user = user
-                redirect(action: 'index')
+                redirect(controller: 'Login', action: 'index')
 
             }
             else {
@@ -36,6 +36,8 @@ class LoginController {
         {
             flash.error="User not found"
         }
+        redirect(action:'index')
+
     }
 
     def register() {
@@ -72,8 +74,6 @@ class LoginController {
         else {
             flash.error="error"
         }
-
-        redirect(action: "index")
-
+        render(view:'register')
     }
 }

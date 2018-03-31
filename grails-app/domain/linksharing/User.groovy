@@ -13,7 +13,7 @@ class User {
     Date lastUpdated
     Byte photo
 
-   // List<Topic> topics
+    static hasMany = [topic:Topic]
 
     String name
     String confirmPassword
