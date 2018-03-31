@@ -28,7 +28,10 @@ class ResourceController {
                 Resource resource = Resource.findById(resourceId)
                 RatingInfoVo ratingInfoVO = resource.getResourceRatingInformation()
                 render("TOTAL VOTES- $ratingInfoVO.totalVotes + TOTAL SCORE- $ratingInfoVO.totalScore + AVERAGE SCORE- $ratingInfoVO.averageScore")
-            }
+                render("TRENDING TOPICS-" + trendingTopics.each {println("$it.name + $it.visibility + $it.createdBy")})
+
+
+        }
 
 
 }
