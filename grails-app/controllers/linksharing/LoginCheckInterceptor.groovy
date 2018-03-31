@@ -4,12 +4,12 @@ package linksharing
 class LoginCheckInterceptor {
     LoginCheckInterceptor()
     {
-        matchAll().excludes(controller: 'login',action:'loginHandler')
+        matchAll().excludes(controller: 'Login')
     }
     boolean before() {
         if (!session.user) {
             flash.error= "NO ACTIVE SESSION"
-            redirect(view:"login/index")
+            redirect(controller: 'Login',action: 'index')
         }
 
         true

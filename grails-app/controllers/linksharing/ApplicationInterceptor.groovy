@@ -13,6 +13,8 @@ class ApplicationInterceptor {
             return false
         }
 
+        log.info("ACTION AND CONTROLLER LOG: ${params.toString()}")
+
         true
     }
 
