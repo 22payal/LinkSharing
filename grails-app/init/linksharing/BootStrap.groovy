@@ -52,18 +52,18 @@ class BootStrap {
         createResource()
         println("done Creating Resource")
 
-        println("Creating subscribe topic")
-        subscribeTopic()
-        println("done Creating subscribe topic")
+//        println("Creating subscribe topic")
+//       subscribeTopic()
+//        println("done Creating subscribe topic")
 
-        println("Creating reading item")
-        createReadingItem()
-        println("done Creating reading item")
-
-        println("Creating resource rating")
-        createResourceRating()
-        println("done Creating resource rating")
-
+//        println("Creating reading item")
+//        createReadingItem()
+//        println("done Creating reading item")
+//
+//        println("Creating resource rating")
+//        createResourceRating()
+//        println("done Creating resource rating")
+//
     }
     def destroy = {
     }
@@ -136,13 +136,14 @@ class BootStrap {
 
         List<User> allusers = User.findAll()
         println(allusers)
-
+        int topicCount =0
         allusers.each
                 { user ->
                     println(user)
                     if (!(Topic.findByCreatedBy(user)))
                     {
-                        5.times { topicCount ->
+                        5.times {
+
                             user.refresh()
                             println("Creating topic for user $user with name topic $topicCount")
                             Topic topic = new Topic(topicName:  "topic $topicCount", visibility: Visibility.PRIVATE, createdBy: user)
@@ -151,47 +152,72 @@ class BootStrap {
                                 println topic.errors
                             }
                             topic.save(flush: true, failOnError: true)
+                            topicCount++
                         }
                         //   user.save(flush: true, failonerror: true)
                     }
 
-                    user.save(flush: true, failonerror: true)
+                    user.save(flush: true, failonError: true)
                 }
 
     }
 
-    void createResource() {
-        List<Topic> allTopics = Topic.findAll()
+
+    void createResource()
+    {
+        List<Topic> allTopics = Topic.getAll()
 
         allTopics.each {
 
-            temp ->
-                if (!Resource.findByTopic(temp)) {
-                    4.times {
+            Topic temp=it
 
-                        Resource linkResource = new LinkResource(
-                                createdby: temp.createdBy,
-                                description: "This link resource is created by ${temp.createdBy.name} for topic ${temp.topicName}",
-                                topic: temp,
-                                url: "www.${temp.createdBy.name}.com/${temp.topicName}/${it}")
+            if (Resource.findAllByTopic(temp).size()==0)
+            {
 
-                        linkResource.save()
+                (1..2).eachWithIndex
+                        {
+                            index ,item ->
+                                DocumentResource documentResource = new DocumentResource(
+                                        createdBy: temp.createdBy,
+                                        description: "This document resource with index $index is created by ${temp.createdBy.name} for topic ${temp.topicName}",
+                                        topic: temp,
+                                        filepath: "/${temp.createdBy.name}/${temp.topicName}/${it}")
+
+                                if (documentResource.save(flush: true)) {
+                                    temp.addToResource(documentResource)
+                                    //temp.createdBy.addToResource(documentResource)
+                                    temp.save(flush: true)
+                                    log.info("Saved Successfully : $documentResource")
+                                } else
+                                    log.error("Error while saving : $documentResource")
+                        }
 
 
-                        Resource documentResource = new DocumentResource(
-                                createdBy: temp.createdBy,
-                                description: "This document resource is created by ${temp.createdBy.name} for topic ${temp.topicName}",
-                                topic: temp,
-                                filepath: "/${temp.createdBy.name}/${temp.topicName}/${it}")
+                (1..2).eachWithIndex { index ,item ->
 
-                        documentResource.save()
+                    LinkResource linkResource = new LinkResource(
+                            createdBy: temp.createdBy,
+                            description: "This link resource with index $index is created by ${temp.createdBy.name} for topic ${temp.topicName}",
+                            topic: temp,
+                            url: "www.${temp.topicName}.com")
 
+                    if (linkResource.save(flush: true)) {
+                        temp.addToResource(linkResource)
+
+                        temp.save(flush: true)
+
+                        log.info("Saved Successfully : $linkResource")
+                    } else {
+                        log.error("Error while saving : $linkResource")
+                        linkResource.errors.allErrors.each { println it }
                     }
                 }
+                // temp.save(flush: true)
+
+            }
 
         }
     }
-
 
     void subscribeTopic() {
 

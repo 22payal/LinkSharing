@@ -29,7 +29,7 @@ class Topic {
 
     static  mapping = {
         sort 'topicName':"asc"
-        
+
 
     }
     @Override
