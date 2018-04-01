@@ -20,9 +20,7 @@ class Subscription {
 
     }
 
-    Subscription(Topic topic, User user, Seriousness seriousness) {
-        this.topic = topic
-        this.user = user
-        this.seriousness = seriousness
+    static mapping = {
+        seriousness defaultValue: Seriousness.SERIOUS
     }
 }
